@@ -1,0 +1,92 @@
+border-radius()
+    -webkit-border-radius arguments
+    -moz-border-radius arguments
+    border-radius arguments
+
+transform(args...)
+    -moz-transform args
+    -webkit-transform args
+    -o-transform args
+    -ms-transform args
+    -khtml-transform args
+    transform args
+
+transform-origin(args...)
+    -moz-transform-origin args
+    -webkit-transform-origin args
+    -o-transform-origin args
+    -ms-transform-origin args
+    -khtml-transform-origin args
+    transform-origin args
+
+transition(args...)
+    -webkit-transition args
+    -ms-transition args
+    -moz-transition args
+    -ms-transition args
+    -o-transition args
+    transition args
+
+animation(args...)
+    -webkit-animation args
+    -ms-animation args
+    -moz-animation args
+    -o-animation args
+    animation args
+
+animation-name(args...)
+    -webkit-animation-name args
+    -ms-animation-name args
+    -moz-animation-name args
+    -o-animation-name args
+    animation-name args
+
+animation-fill-mode(args...)
+    -webkit-animation-fill-mode args
+    -ms-animation-fill-mode args
+    -moz-animation-fill-mode args
+    -o-animation-fill-mode args
+    animation-fill-mode args
+
+animation-iteration-count(args...)
+    -webkit-animation-iteration-count args
+    -ms-animation-iteration-count args
+    -moz-animation-iteration-count args
+    -o-animation-iteration-count args
+    animation-iteration-count args
+
+animation-duration(args...)
+    -webkit-animation-duration args
+    -ms-animation-duration args
+    -moz-animation-duration args
+    -o-animation-duration args
+    animation-duration args
+
+animation-delay(args...)
+    -webkit-animation-delay args
+    -ms-animation-delay args
+    -moz-animation-delay args
+    -o-animation-delay args
+    animation-delay args
+
+animation-timing-function(args...)
+    -webkit-animation-timing-function args
+    -ms-animation-timing-function args
+    -moz-animation-timing-function args
+    -o-animation-timing-function args
+    animation-timing-function args
+
+box-shadow()
+    -webkit-box-shadow arguments
+    -moz-box-shadow arguments
+    box-shadow arguments
+
+calc()
+    vendors = webkit moz ms o
+    if current-property
+        for prefix in vendors
+            arguments = unquote(arguments)
+            add-property(current-property[0], s('-%s-calc(%s)', prefix, arguments))
+        s('calc(%s)', arguments)
+    else
+        error('calc() must be used within a property')
