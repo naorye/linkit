@@ -15,7 +15,8 @@ define([
             app.layout.setView(addItem).render();
         },
         showItems: function() {
-
+            var showItems = new module.views.ShowItemsView();
+            app.layout.setView(showItems).render();
         }
     });
 
