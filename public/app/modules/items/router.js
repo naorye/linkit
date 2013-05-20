@@ -10,7 +10,7 @@ define([
             '': 'showItems'
         },
 
-        login: function() {
+        addItem: function() {
             var addItem = new module.views.AddItemView();
             app.layout.setView(addItem).render();
         },
