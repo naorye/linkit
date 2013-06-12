@@ -6,12 +6,15 @@ define([
     var AccountRouter = Backbone.SubRoute.extend({
         routes: {
             'login': 'login',
-            '': 'login'
+            '*unknown': 'login'
         },
 
         login: function() {
+            if (app.session.isLoggedIn()) {
+                return app.router.navigateToIndex();
+            }
             var login = new module.views.LoginView();
-            app.layout.setView(login).render();
+            app.layout.setContent(login).render();
         }
     });
 

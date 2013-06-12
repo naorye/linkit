@@ -1,18 +1,20 @@
 define([
     'app',
     'modules/account/router',
-    'modules/items/router'
-], function(app, AccountRouter, ItemsRouter) {
+    'modules/links/router',
+    'common/layout-view'
+], function(app, AccountRouter, LinksRouter, LayoutView) {
 
     var Router = Backbone.Router.extend({
         routes: {
-            '': 'index'
         },
         subrouters: {
             'account/': AccountRouter,
-            'items/': ItemsRouter
+            'links/': LinksRouter
         },
         constructor: function (options) {
+            this.route('*all', 'indexRoute', this.index);
+
             // init subrouters:
             // each entry in subrouters property converted to an entry in routers property.
             // for example, "account/": AccountRouter converted to:
@@ -44,12 +46,24 @@ define([
             Backbone.Router.prototype.constructor.call(this, options);
         },
         initialize: function() {
-            app.useLayout({
-                el: '#main'
-            }).render();
+            var layout = new LayoutView();
+            app.useLayout(layout).render();
         },
         index: function() {
+            if (!app.session.isLoggedIn()) {
+                return this.navigateToLogin();
+            }
+            this.navigateToLinks();
+        },
+
+        navigateToLogin: function() {
             this.navigate('account/login', { trigger: true});
+        },
+        navigateToIndex: function() {
+            this.navigate('/', { trigger: true});
+        },
+        navigateToLinks: function() {
+            this.navigate('links/', { trigger: true});
         }
     });
 

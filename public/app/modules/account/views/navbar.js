@@ -4,22 +4,18 @@ define([
     'app'
 ], function(_, Backbone, app) {
 
-    var ShowItemsView = Backbone.View.extend({
-        className: 'show-items-view',
-        template: 'items/show-items',
-
+    var NavbarView = Backbone.View.extend({
+        className: 'navbar-view',
+        template: 'account/navbar',
         initialize: function() {
 
         },
         cleanup: function() {
 
         },
-        beforeRender: function() {
-        },
         afterRender: function() {
-
         }
     });
 
-    return ShowItemsView;
+    return NavbarView;
 });

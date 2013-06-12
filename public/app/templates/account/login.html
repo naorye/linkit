@@ -1,8 +1,10 @@
 <div class="navbar clearfix">
     <div class="linkit-logo"></div>
-    <button class="facebook-login">
-        Join Now With <span class="facebook-logo">facebook</span>
-    </button>
+    <% if (!this.isLoggedIn) { %>
+        <button class="facebook-login">
+            Join Now With <span class="facebook-logo">facebook</span>
+        </button>
+    <% } %>
 </div>
 <div class="bullets-wrapper">
     <div class="bullets clearfix">

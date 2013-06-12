@@ -1,0 +1,100 @@
+@import 'fonts.styl';
+@import 'variables.styl';
+@import 'mixins.styl';
+
+ul.tagit {
+    //padding: 0;
+    overflow: auto;
+    //margin: 0;
+
+    border: solid 1px #C6C6C6;
+    li {
+        display: block;
+        float: left;
+        margin: 0;
+
+        &.tagit-choice {
+            position: relative;
+            line-height: inherit;
+            border-radius: 6px;
+            border: 1px solid #CAD8F3;
+
+            background: none;
+            background-color: #DEE7F8;
+
+            font-weight: normal;
+
+            &:hover, .remove {
+                background-color: #bbcef1;
+                border-color: #6d95e0;
+            }
+            a.tagit-label {
+                cursor: pointer;
+                text-decoration: none;
+                &:not(a) {
+                    color: #555;
+                }
+                &:hover {
+                    color: #222;
+                }
+            }
+            .tagit-close {
+                cursor: pointer;
+                position: absolute;
+                right: .1em;
+                top: 50%;
+                margin-top: -8px;
+                line-height: 17px;
+                right: .4em;
+                text-decoration: none;
+                /* used for some custom themes that don't need image icons */
+                .text-icon {
+                    display: none;
+                    display: inline;
+                    font-family: arial, sans-serif;
+                    font-size: 16px;
+                    line-height: 16px;
+                    color: #777;
+                    &:hover {
+                        color: #222;
+                    }
+                }
+            }
+            .ui-icon {
+                display: none;
+            }
+            input {
+                display: block;
+                float: left;
+                margin: 0;
+            }
+        }
+
+        &.tagit-choice-read-only { 
+            //padding: .2em .5em .2em .5em; 
+        } 
+
+        &.tagit-choice-editable { 
+            //padding: .2em 18px .2em .5em; 
+        } 
+
+        &.tagit-new {
+            //padding: .25em 4px .25em 0;
+        }
+    }
+
+    input[type='text'] {
+        box-sizing: border-box;
+        box-shadow: none;
+
+        border: none;
+        margin: 0;
+        padding: 0;
+        width: inherit;
+        background-color: inherit;
+        outline: none;
+
+        color: #333333;
+        background: none;
+    }
+}

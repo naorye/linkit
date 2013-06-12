@@ -4,9 +4,9 @@ define([
     'app'
 ], function(_, Backbone, app) {
 
-    var AddItemView = Backbone.View.extend({
-        className: 'add-item-view',
-        template: 'items/add-item',
+    var ShowLinkView = Backbone.View.extend({
+        className: 'show-link-view',
+        template: 'links/show-link',
 
         initialize: function() {
 
@@ -21,5 +21,5 @@ define([
         }
     });
 
-    return AddItemView;
+    return ShowLinkView;
 });

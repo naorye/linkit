@@ -1,8 +1,9 @@
 define([
     'lodash',
     'backbone',
-    'app'
-], function(_, Backbone, app) {
+    'app',
+    'common/facebook-actions'
+], function(_, Backbone, app, facebookActions) {
 
     var bulletWidth = 290,
         bulletPadding = 15,
@@ -14,7 +15,8 @@ define([
         className: 'login-view',
         template: 'account/login',
         events: {
-            'click .bullet': 'highlightLogin'
+            'click .bullet': 'highlightLogin',
+            'click .facebook-login': 'facebookLogin'
         },
         initialize: function() {
             this.calculateBulletsWidth =
@@ -24,7 +26,10 @@ define([
         cleanup: function() {
             $(window).off('resize', this.calculateBulletsWidth);
         },
-        beforeRender: function() {
+        serialize: function() {
+            return {
+                isLoggedIn: app.session.get('isLoggedIn')
+            };
         },
         afterRender: function() {
             this.calculateBulletsWidth();
@@ -54,6 +59,13 @@ define([
             $('html, body')
                 .animate({ scrollTop: top }, 400, 'swing')
                 .promise().done(blink);
+        },
+        facebookLogin: function() {
+            facebookActions.login().done(function() {
+                app.router.navigateToIndex();
+            }).fail(function() {
+                console.log(arguments);
+            });
         }
     });
 

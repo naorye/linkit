@@ -1,0 +1,31 @@
+doctype 5
+html(lang="en")
+    head
+        title Backbone Boilerplate
+
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+        meta(name='viewport', content='width=device-width,initial-scale=1')
+
+        // Application styles
+        link(rel='stylesheet', href='/assets/css/index.css')
+    body
+        // For facebook api
+        div#fb-root
+
+        // Main container
+        div#main(role='main')
+
+        // Application source
+        script(type='text/javascript', src='/assets/js/libs/require.js', data-main='/app/config')
+
+        - if (user && user.isLoggedIn) {
+            script(type='text/javascript')
+                window.user = {
+                    isLoggedIn: true,
+                    id: '#{user._id}',
+                    name: '#{user.name}',
+                    email: '#{user.email}',
+                    createdAt: new Date('#{user.createdAt}')
+                };
+        - }

@@ -1,0 +1,18 @@
+doctype 5
+html(lang="en")
+    head
+        script(type='text/javascript')
+            if (window.opener && window.opener.app) {
+                window.opener.app.vent.trigger('authCallback', {
+                    'success': true,
+                    'user': {
+                        isLoggedIn: true,
+                        id: '#{user._id}',
+                        name: '#{user.name}',
+                        email: '#{user.email}',
+                        createdAt: new Date('#{user.createdAt}')
+                    }
+                });
+            }
+            window.close();
+    body
